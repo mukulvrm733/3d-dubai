@@ -397,7 +397,13 @@ nav.solid {
 }
 .n-logo-text span:first-child { font-size: .76rem; }
 .n-logo-text span:last-child  { font-size: .66rem; }
-.n-links { display: flex; align-items: center; gap: 32px; }
+/* Desktop: fixed so it floats over the nav bar regardless of nav's stacking context */
+.n-links {
+  position: fixed; top: 0; right: 60px;
+  height: 80px;
+  display: flex; align-items: center; gap: 32px;
+  z-index: 1001;
+}
 .n-links a { font-size: .88rem; font-weight: 500; color: var(--ink2); letter-spacing: .02em; position: relative; transition: color .2s; }
 .n-links a::after {
   content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 2px;
@@ -521,6 +527,7 @@ nav.solid {
   font-weight: 400;
   line-height: 1.0;
   letter-spacing: .02em;
+  margin-top: 0.6rem;
   opacity: 0; transform: translateY(24px);
   animation: slideUp .65s cubic-bezier(.4,0,.2,1) forwards;
   background: linear-gradient(150deg, #FBE97A 0%, #EDCF50 14%, #D4A030 34%, #A87020 56%, #7C4E10 74%, #C8922A 100%);
@@ -723,9 +730,10 @@ nav.solid {
 .sh-h {
   font-family: var(--font-display);   /* Sacramento */
   font-size: clamp(3rem, 5.5vw, 4.4rem);  /* larger: Sacramento appears optically smaller */
-  font-weight: 400; line-height: 1.2;
+  font-weight: 400; line-height: 1.3;
   letter-spacing: .01em;
   margin-bottom: 18px;
+  padding-bottom: 0.18em;
   /* full heading in metallic gold gradient */
   background: var(--heading-grad);
   -webkit-background-clip: text;
@@ -1486,7 +1494,8 @@ nav.solid {
 .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
 .contact-info h2 {
   font-family: var(--font-display); font-size: clamp(2.6rem,4.5vw,4rem);
-  font-weight: 400; line-height: 1.2; letter-spacing: .01em; margin-bottom: 16px;
+  font-weight: 400; line-height: 1.3; letter-spacing: .01em; margin-bottom: 16px;
+  padding-bottom: 0.18em;
   background: var(--heading-grad);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
@@ -1637,6 +1646,8 @@ footer { background: var(--ink); color: rgba(255,255,255,.8); padding: 80px 60px
 .n-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: var(--gold3); }
 
 /* Close button — only visible inside mobile overlay */
+.n-menu-header { display: none; }
+
 .n-close {
   display: none;
   position: absolute;
@@ -1673,6 +1684,9 @@ footer { background: var(--ink); color: rgba(255,255,255,.8); padding: 80px 60px
   .n-links {
     position: fixed;
     inset: 0;
+    width: 100%;
+    height: 100dvh;
+    right: 0;
     background: rgba(247,245,242,.97);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -1685,8 +1699,62 @@ footer { background: var(--ink); color: rgba(255,255,255,.8); padding: 80px 60px
     transform: translateX(100%);
     transition: transform .38s cubic-bezier(.4,0,.2,1), visibility .38s;
     visibility: hidden;
-    padding: 80px 24px 40px;
+    padding: 72px 24px 40px;
     overflow-y: auto;
+  }
+
+  /* Mobile menu brand header — only shown inside mobile overlay */
+  .n-menu-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .n-menu-logo {
+    width: 68px;
+    height: 68px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(237,212,114,.18) 0%, rgba(184,147,90,.12) 100%);
+    padding: 6px;
+    filter: drop-shadow(0 4px 18px rgba(184,147,90,.45));
+    margin-bottom: 4px;
+  }
+  .n-menu-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.22;
+  }
+  .n-menu-brand span {
+    font-family: 'Exo 2', 'Arial Black', Impact, sans-serif;
+    font-weight: 800;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    background: linear-gradient(160deg, #EDD472 0%, #DDB040 12%, #CC9828 26%, #B88022 42%, #9A6618 58%, #7C4E10 72%, #8E6218 82%, #AA7E28 91%, #C89632 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .n-menu-brand span:first-child { font-size: 1.08rem; }
+  .n-menu-brand span:last-child  { font-size: .88rem; }
+  .n-menu-tagline {
+    margin: 3px 0 0;
+    font-size: .68rem;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    font-family: 'DM Sans', sans-serif;
+    opacity: .75;
+  }
+  .n-menu-divider {
+    width: 48px;
+    height: 1.5px;
+    margin-top: 14px;
+    background: linear-gradient(90deg, transparent, var(--gold3), transparent);
+    border-radius: 2px;
   }
   .n-links.n-links--open {
     transform: translateX(0);

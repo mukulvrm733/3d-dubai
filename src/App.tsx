@@ -396,7 +396,7 @@ export default function App() {
 
         {/* emblem — slides from LEFT + rotateY flip */}
         <div className="pl-emblem">
-          <img src="/img-1.png" alt="IIV emblem" />
+          <img src="/img-1.webp" alt="IIV emblem" />
         </div>
 
         {/* wordmark — slides from RIGHT to centre */}
@@ -439,26 +439,11 @@ export default function App() {
       {/* ══ NAV ══ */}
       <nav className={navSolid ? 'solid' : ''}>
         <div className="n-logo">
-          <img src="/img-1.png" alt="IIV" className="n-logo-img" />
+          <img src="/img-1.webp" alt="IIV" className="n-logo-img" />
           <div className="n-logo-text">
             <span>Infinite Imperial</span>
             <span>Ventures</span>
           </div>
-        </div>
-        <div className={`n-links${mobileNavOpen ? ' n-links--open' : ''}`}>
-          <button className="n-close" onClick={() => setMobileNavOpen(false)} aria-label="Close menu">✕</button>
-          <a href="#about"        onClick={() => setMobileNavOpen(false)}>About</a>
-          <a href="#projects"     onClick={() => setMobileNavOpen(false)}>Projects</a>
-          <a href="#why"          onClick={() => setMobileNavOpen(false)}>Why Us</a>
-          <a href="#services"     onClick={() => setMobileNavOpen(false)}>Services</a>
-          <a href="#faq"          onClick={() => setMobileNavOpen(false)}>FAQ</a>
-          <button
-            className="n-cta"
-            onClick={e => { addRipple(e); smoothScroll('contact'); setMobileNavOpen(false) }}
-            style={{ position: 'relative', overflow: 'hidden' }}
-          >
-            Get in Touch
-          </button>
         </div>
         <button
           className={`n-hamburger${mobileNavOpen ? ' open' : ''}`}
@@ -468,6 +453,32 @@ export default function App() {
           <span /><span /><span />
         </button>
       </nav>
+
+      {/* Mobile nav overlay — sibling of nav so backdrop-filter on nav.solid doesn't trap it */}
+      <div className={`n-links${mobileNavOpen ? ' n-links--open' : ''}`}>
+        <button className="n-close" onClick={() => setMobileNavOpen(false)} aria-label="Close menu">✕</button>
+        <div className="n-menu-header">
+          <img src="/img-1.webp" alt="IIV" className="n-menu-logo" />
+          <div className="n-menu-brand">
+            <span>Infinite Imperial</span>
+            <span>Ventures</span>
+          </div>
+          <p className="n-menu-tagline">Dubai Real Estate</p>
+          <div className="n-menu-divider" />
+        </div>
+        <a href="#about"        onClick={() => setMobileNavOpen(false)}>About</a>
+        <a href="#projects"     onClick={() => setMobileNavOpen(false)}>Projects</a>
+        <a href="#why"          onClick={() => setMobileNavOpen(false)}>Why Us</a>
+        <a href="#services"     onClick={() => setMobileNavOpen(false)}>Services</a>
+        <a href="#faq"          onClick={() => setMobileNavOpen(false)}>FAQ</a>
+        <button
+          className="n-cta"
+          onClick={e => { addRipple(e); smoothScroll('contact'); setMobileNavOpen(false) }}
+          style={{ position: 'relative', overflow: 'hidden' }}
+        >
+          Get in Touch
+        </button>
+      </div>
 
       {/* ══ HERO ══ */}
       <HeroCarousel
@@ -792,7 +803,7 @@ export default function App() {
           <div className="footer-top">
             <div className="footer-brand">
               <div className="f-logo">
-                <img src="/img-1.png" alt="Infinite Imperial Ventures" className="f-logo-img" />
+                <img src="/img-1.webp" alt="Infinite Imperial Ventures" className="f-logo-img" />
                 <div className="n-logo-text">
                   <span>Infinite Imperial</span>
                   <span>Ventures</span>
