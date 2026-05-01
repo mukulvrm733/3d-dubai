@@ -1,63 +1,44 @@
 import { useState, useEffect } from 'react'
-import { useRipple } from '../hooks/useRipple'
+import { Link, useLocation } from 'react-router-dom'
+import './Navbar.css'
+import LeadFormModal from './LeadFormModal'
 
-const LINKS = [['about','About'],['projects','Projects'],['why','Why Us'],['services','Services'],['faq','FAQ'],['contact','Contact Us']]
-
-export default function Navbar({ onOpenLeadForm }) {
-  const [solid, setSolid] = useState(false)
-  const [open, setOpen] = useState(false)
-  const ripple = useRipple()
-
-  const go = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-    setOpen(false)
-  }
-
-  const handleGetInTouch = (e) => {
-    ripple(e)
-    setOpen(false)
-    onOpenLeadForm()
-  }
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [showLead, setShowLead] = useState(false)
+  const location = useLocation()
 
   useEffect(() => {
-    const fn = () => setSolid(window.scrollY > 60)
-    window.addEventListener('scroll', fn, { passive: true })
-    return () => window.removeEventListener('scroll', fn)
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [open])
+  useEffect(() => { setMenuOpen(false) }, [location])
 
   return (
     <>
-      <nav id="nav" className={solid ? 'solid' : ''}>
-        <div className="n-logo">
-          <img src="/img-1.webp" alt="IIV" className="n-logo-img1" />
-          <img src="/img-2.webp" alt="Infinite Imperial Ventures" className="n-logo-img2" />
-        </div>
-        <div className="n-links">
-          {LINKS.map(([id,label]) => (
-            <a key={id} href={`#${id}`} onClick={e => { e.preventDefault(); go(id) }}>{label}</a>
-          ))}
-          <button className="n-cta" onClick={handleGetInTouch}>Get in Touch</button>
-        </div>
-        <button className={`n-ham${open ? ' open' : ''}`} onClick={() => setOpen(o => !o)} aria-label="Toggle menu">
+      <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
+        <Link to="/" className="navbar__logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <img src="/img-1.webp" alt="IIV logo part 1" className="navbar__logo-img" />
+          <img src="/img-2.webp" alt="IIV logo part 2" className="navbar__logo-img" />
+        </Link>
+
+        <button className="navbar__burger" onClick={() => setMenuOpen(o => !o)} aria-label="Toggle menu">
           <span /><span /><span />
         </button>
-      </nav>
 
-      {open && (
-        <div className="n-mob" onClick={() => setOpen(false)}>
-          <div className="n-mob-inner" onClick={e => e.stopPropagation()}>
-            {LINKS.map(([id,label]) => (
-              <a key={id} href={`#${id}`} onClick={e => { e.preventDefault(); go(id) }}>{label}</a>
-            ))}
-            <button className="n-cta n-mob-cta" onClick={handleGetInTouch}>Get in Touch</button>
-          </div>
-        </div>
-      )}
+        <ul className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}>
+          <li><Link to="/projects" className={location.pathname === '/projects' ? 'active' : ''}>Projects</Link></li>
+          <li><Link to="/services" className={location.pathname === '/services' ? 'active' : ''}>Services</Link></li>
+          <li><Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>About Us</Link></li>
+          <li><Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link></li>
+        </ul>
+
+        <button className="navbar__cta" onClick={() => setShowLead(true)}>Get in Touch</button>
+      </nav>
+      {showLead && <LeadFormModal onClose={() => setShowLead(false)} />}
     </>
   )
 }

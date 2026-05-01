@@ -1,47 +1,25 @@
-import { useEffect, useState } from 'react'
-import ScrollProgress from './components/ScrollProgress'
-import SectionNav   from './components/SectionNav'
-import Navbar       from './components/Navbar'
-import Hero         from './components/Hero'
-import Ticker       from './components/Ticker'
-import About        from './components/About'
-import Projects     from './components/Projects'
-import WhyUs        from './components/WhyUs'
-import Service      from './components/Service'
-import FAQ          from './components/FAQ'
-import Contact      from './components/Contact'
-import Footer       from './components/Footer'
-import FloatingCTA  from './components/FloatingCTA'
-import LeadFormModal from './components/LeadFormModal'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import Home from './pages/Home'
+import Projects from './pages/Projects'
+import Services from './pages/Services'
+import About from './pages/About'
+import Contact from './pages/Contact'
+import './App.css'
 
 export default function App() {
-  const [leadOpen, setLeadOpen] = useState(false)
-
-  useEffect(() => {
-    const items = document.querySelectorAll('.sr,.srl,.srr')
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('up') })
-    }, { threshold: 0.1 })
-    items.forEach(el => io.observe(el))
-    return () => io.disconnect()
-  }, [])
-
   return (
-    <>
-      <ScrollProgress />
-      <SectionNav />
-      <Navbar onOpenLeadForm={() => setLeadOpen(true)} />
-      <Hero />
-      <Ticker />
-      <About />
-      <Projects onOpenLeadForm={() => setLeadOpen(true)} />
-      <WhyUs />
-      <Service />
-      <FAQ />
-      <Contact />
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
       <Footer />
-      <FloatingCTA />
-      <LeadFormModal open={leadOpen} onClose={() => setLeadOpen(false)} />
-    </>
+    </BrowserRouter>
   )
 }
