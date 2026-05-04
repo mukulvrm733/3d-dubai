@@ -77,7 +77,7 @@ export default function Services() {
             <h2 className="sec-title">A Simple, Structured <em>Process</em></h2>
             <p className="process-sub">From your first conversation to the final handover — every step is transparent, guided, and built around your needs.</p>
           </div>
-          <div className="proc-divider" />
+          
           <div className="proc-grid">
             {[
               {

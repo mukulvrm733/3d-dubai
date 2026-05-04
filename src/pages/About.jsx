@@ -74,7 +74,7 @@ export default function About() {
       <section className="diff-section">
         <div className="diff-inner">
           <h2 className="sec-title">What Makes Us <em>Different</em></h2>
-          <div className="diff-divider" />
+          
           <div className="diff-grid">
             {[
               {
