@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteBase /
+
+# Pass real files and directories through unchanged
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Don't rewrite API or uploaded images
+RewriteCond %{REQUEST_URI} !^/api/
+RewriteCond %{REQUEST_URI} !^/uploads/
+
+# Everything else → React SPA
+RewriteRule . /index.html [L]
