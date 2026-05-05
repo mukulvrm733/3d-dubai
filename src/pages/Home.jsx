@@ -256,7 +256,7 @@ export default function Home() {
 
             <h1 className="hero__title">Find the Right<br /><em>Property</em> in Dubai</h1>
             <div className="hero__bottom">
-              <p className="hero__desc">Your journey to the right property starts here. We offer a curated selection of apartments, villas, and townhouses across Dubai, suited for both end-users and investors.</p>
+              <p className="hero__desc">Your journey to the right property starts here. We offer a curated selection of apartments, villas, and townhouses across UAE, suited for both end-users and investors.</p>
               <div className="hero__btns">
                 <Link to="/projects" className="btn-warm"><span>View Projects</span></Link>
                 <button onClick={() => setShowLead(true)} className="btn-outline-warm">Get in Touch</button>
