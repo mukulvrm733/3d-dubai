@@ -9,7 +9,7 @@
   background: linear-gradient(180deg, #0a0510 0%, #1a0a1f 15%, #3d1020 35%, #7b2c1a 60%, #c4561a 80%, #e8892a 100%);
 }
 .page-hero__content {
-  position: relative; z-index: 10; padding: 4rem; padding-top: 8rem;
+  position: relative; z-index: 10; padding: 4rem; padding-top: 2.5rem;
   background: linear-gradient(to top, rgba(18,10,4,0.98) 0%, rgba(18,10,4,0.6) 70%, transparent 100%);
   width: 100%; align-self: flex-end;
   max-width: 100%;
@@ -47,8 +47,8 @@
 .founder { background: var(--deep); padding: 8rem 4rem; }
 .founder__inner { max-width: 1200px; margin: 0 auto; }
 .founder__layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: center; }
-.founder__img-wrap { width: 100%; aspect-ratio: 3/4; overflow: hidden; }
-.founder__img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.founder__img-wrap { width: 100%; }
+.founder__img { width: 100%; height: auto; display: block; }
 .founder__quote-wrap { position: relative; }
 .founder__big-quote { font-family: 'Playfair Display', serif; font-size: 8rem; color: rgba(232,201,122,0.12); line-height: 1; margin-bottom: -2rem; }
 .founder__quote {
@@ -149,7 +149,16 @@
   .page-hero__content, .about-intro, .founder, .diff-section, .about-cta { padding: 3rem 1.5rem; }
   .about-intro__inner { grid-template-columns: 1fr; gap: 3rem; }
   .diff-grid { grid-template-columns: 1fr; }
-  .page-hero__content { padding-top: 6rem; }
+  .page-hero__content { padding-top: 1.5rem; }
   .founder__layout { grid-template-columns: 1fr; gap: 2.5rem; }
   .founder__img-wrap { aspect-ratio: 4/3; }
+}
+
+@media (max-width: 600px) {
+  .founder { padding: 4rem 1.25rem; }
+  .founder__big-quote { font-size: 5rem; margin-bottom: -1rem; }
+  .founder__quote { font-size: 0.92rem; padding-left: 1.25rem; }
+  .diff-card { padding: 2rem 1.5rem; }
+  .astat__num { font-size: 1.5rem; }
+  .about-cta { padding: 5rem 1.25rem; }
 }

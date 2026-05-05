@@ -10,7 +10,7 @@
 }
 .page-hero__content {
   position: relative; z-index: 10;
-  padding: 4rem; padding-top: 8rem;
+  padding: 4rem; padding-top: 2.5rem;
   background: linear-gradient(to top, rgba(18,10,4,0.98) 0%, rgba(18,10,4,0.6) 70%, transparent 100%);
   max-width: 1200px; width: 100%; margin: 0 auto; align-self: flex-end; width: 100%;
 }
@@ -126,8 +126,12 @@
   .page-hero__content, .svcs-section, .process-section, .svc-cta { padding: 3rem 1.5rem; }
   .svcs-grid { grid-template-columns: 1fr 1fr; }
   .proc-grid { grid-template-columns: 1fr; }
-  .page-hero__content { padding-top: 6rem; }
+  .page-hero__content { padding-top: 1.5rem; }
 }
 @media (max-width: 600px) {
   .svcs-grid { grid-template-columns: 1fr; }
+  .svc-card { padding: 2rem 1.4rem; }
+  .proc-card { padding: 2rem 1.5rem; }
+  .process-section { padding: 4rem 1.25rem; }
+  .svc-cta { padding: 5rem 1.25rem; }
 }

@@ -27,28 +27,26 @@ export default function Footer() {
           <p className="footer__desc">Infinite Imperial Ventures — A Clear Approach to Dubai Real Estate. We help you identify the right property based on your needs and priorities.</p>
 
           <div className="footer__social">
-            <a href="#" className="footer__social-link" aria-label="Instagram">
+            <a href="https://www.instagram.com/infiniteimperialventures" className="footer__social-link" aria-label="Instagram">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                 <circle cx="12" cy="12" r="4"/>
                 <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
               </svg>
             </a>
-            <a href="#" className="footer__social-link" aria-label="Facebook">
+            <a href="https://www.facebook.com/profile.php?id=61574676416131" className="footer__social-link" aria-label="Facebook">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
               </svg>
             </a>
-            <a href="#" className="footer__social-link" aria-label="X (Twitter)">
+            <a href="https://x.com/IIV_REDXB" className="footer__social-link" aria-label="X (Twitter)">
               <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
               </svg>
             </a>
-            <a href="#" className="footer__social-link" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                <rect x="2" y="9" width="4" height="12"/>
-                <circle cx="4" cy="4" r="2"/>
+            <a href="https://www.youtube.com/@iivrealestatellc" className="footer__social-link" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
               </svg>
             </a>
           </div>

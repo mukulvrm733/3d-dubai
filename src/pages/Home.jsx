@@ -6,27 +6,31 @@ import './Home.css'
 const featuredProjects = [
   {
     id: 1,
-    image: '/Projects/Skyflame.webp',
-    type: 'Apartment / Luxury Residential', status: 'Off-Plan', name: 'Binghatti Skyflame',
-    loc: 'Majan, Dubailand, Dubai', price: 'Starting from AED 699,999',
+    image: '/Projects/VisionIconic.webp',
+    type: 'Apartment', status: 'Off-Plan', name: 'Vision Iconic by Binghatti',
+    loc: 'Meydan, Dubai', price: 'Starting from AED 2.6M',
+    beds: '1 – 5 BR', developer: 'Binghatti', paymentPlan: '70/30',
   },
   {
     id: 2,
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&auto=format&fit=crop',
-    type: 'Apartment', status: 'Ready', name: 'Marina Bay Residence',
-    loc: 'Dubai Marina', price: 'AED 2,100,000',
+    image: '/Projects/serenz.webp',
+    type: 'Apartment', status: 'Off-Plan', name: 'Serenz by Danube',
+    loc: 'JVC, Dubai', price: 'Starting from AED 864K',
+    beds: 'Studio – 4 BR', developer: 'Danube', paymentPlan: '70/30',
   },
   {
     id: 3,
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80&auto=format&fit=crop',
-    type: 'Townhouse', status: 'Off-Plan', name: 'Bay Grove Townhouse',
-    loc: 'Business Bay, Dubai', price: 'AED 3,800,000',
+    image: '/Projects/Skyflame.webp',
+    type: 'Apartment', status: 'Off-Plan', name: 'Binghatti Skyflame',
+    loc: 'Majan, Dubai', price: 'Starting from AED 698K',
+    beds: 'Studio – 2 BR', developer: 'Binghatti', paymentPlan: '70/30',
   },
   {
     id: 4,
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80&auto=format&fit=crop',
-    type: 'Penthouse', status: 'Ready', name: 'Downtown Sky Residence',
-    loc: 'Downtown Dubai', price: 'AED 8,500,000',
+    image: '/Projects/ovelle.jpg',
+    type: 'Villa', status: 'Off-Plan', name: 'Ovelle The Valley by Emaar',
+    loc: 'The Valley, Dubai', price: 'Starting from AED 7.27M',
+    beds: '4 – 5 BR', developer: 'Emaar', paymentPlan: '80/20',
   },
 ]
 
@@ -113,19 +117,19 @@ const GoogleG = ({ width = 20, height = 20 }) => (
 
 const reviews = [
   {
-    name: 'Rania Al-Mansouri', initials: 'RM', avatarBg: '#7B4F3A', time: '2 months ago',
-    quote: 'IIV helped me navigate the Dubai property market with complete clarity. They took the time to explain all my options and never once pressured me. I found the perfect apartment in Business Bay.',
-    role: 'Investment Buyer · Dubai',
+    name: 'Vishwarajsinh Gohil', initials: 'VG', avatarBg: '#7B4F3A', time: '5 months ago',
+    quote: 'I contacted Infinite Imperial Ventures Real Estate LLC and spoke with Kalpesh Chauhan about the property and the market that I am looking for an investment in Dubai (UAE). He explained everything in depth about the properties and I was very impressed by the things and benefits he explained to me. He went beyond my expectations about arranging a Teams or Zoom call to understand more in detail. I really appreciate his time and the explanation over the call. I will definitely recommend my friends to contact Kalpesh, and I will also stay in touch with him regarding my investment, as I am looking for a flat. Once again, thanks, Kalpesh!',
+    
   },
   {
-    name: 'James Whitfield', initials: 'JW', avatarBg: '#1E5F74', time: '4 months ago',
-    quote: 'As a first-time buyer from overseas, I was apprehensive. The team at IIV made everything straightforward — from the initial consultation to signing the final documents. Exceptional service.',
-    role: 'Residential Buyer · London',
+    name: 'Sudarshan Reddy', initials: 'SR', avatarBg: '#1E5F74', time: '5 months ago',
+    quote: "I had a very good experience with Infinite Imperial Ventures. Arjun Sharma and Dalvi were very supportive and helpful in identifying the perfect property for the requirement I had. It's been a very good and pleasant experience dealing with them. The whole experience was so smooth and memorable. It's a five star experience guys.",
+    
   },
   {
-    name: 'Ahmed Al-Rashidi', initials: 'AR', avatarBg: '#2E4057', time: '6 months ago',
-    quote: 'What sets IIV apart is their honest approach. They showed me a refined selection of properties rather than flooding me with irrelevant options. I am now the proud owner of a villa on the Palm.',
-    role: 'Villa Owner · Abu Dhabi',
+    name: 'Hajra Mahmood', initials: 'HM', avatarBg: '#2E4057', time: 'a year ago',
+    quote: 'I recently purchased a property from Dalvinder Kour and my experience was excellent. The team was professional, knowledgeable, and supportive throughout the process. They made the entire journey smooth and stress-free. The property I purchased exceeded my expectations in every way, from location to quality. I highly recommend to anyone looking for a reliable and trustworthy real estate service!',
+    
   },
 ]
 
@@ -217,6 +221,8 @@ function useReveal() {
 export default function Home() {
   const [openFaq, setOpenFaq] = useState(null)
   const [showLead, setShowLead] = useState(false)
+  const [expandedReviews, setExpandedReviews] = useState({})
+  const QUOTE_LIMIT = 160
   const location = useLocation()
   useReveal()
 
@@ -237,10 +243,10 @@ export default function Home() {
       {/* Hero */}
       <section className="hero">
         <div className="hero__sky" />
-        <img
-          src="/2.webp"
-          alt="Dubai" className="hero__bg-img"
-        />
+        <picture className="hero__bg-picture">
+          <source media="(max-width: 768px)" srcSet="/mobile-bg.webp" />
+          <img src="/2.webp" alt="Dubai" className="hero__bg-img" />
+        </picture>
         <div className="hero__sun" />
         <div className="hero__horizon" />
         <div className="hero__cityline" />
@@ -281,6 +287,11 @@ export default function Home() {
                   <span className="fp-card__type">{p.type}</span>
                   <h3 className="fp-card__name">{p.name}</h3>
                   <p className="fp-card__loc">{p.loc}</p>
+                  <div className="fp-card__meta">
+                    <span className="fp-card__meta-item"><b>{p.beds}</b><em>Beds</em></span>
+                    <span className="fp-card__meta-item"><b>{p.developer}</b><em>Developer</em></span>
+                    <span className="fp-card__meta-item"><b>{p.paymentPlan}</b><em>Plan</em></span>
+                  </div>
                   <p className="fp-card__price">{p.price}</p>
                 </div>
               </div>
@@ -335,7 +346,7 @@ export default function Home() {
             <div className="testi__grating">
               <GoogleG width={36} height={36} />
               <div>
-                <div className="testi__gscore">4.9 <span className="testi__gstars">★★★★★</span></div>
+                <div className="testi__gscore">4.3 <span className="testi__gstars">★★★★★</span></div>
                 <div className="testi__gcount">Based on 47 Google Reviews</div>
               </div>
             </div>
@@ -353,7 +364,12 @@ export default function Home() {
                   <div className="gcard__g"><GoogleG width={18} height={18} /></div>
                 </div>
                 <div className="gcard__stars">★★★★★</div>
-                <p className="gcard__text">{t.quote}</p>
+                <p className="gcard__text">
+                  {!expandedReviews[i] && t.quote.length > QUOTE_LIMIT
+                    ? <>{t.quote.slice(0, QUOTE_LIMIT)}<button className="gcard__more" onClick={() => setExpandedReviews(prev => ({ ...prev, [i]: true }))}> ...more</button></>
+                    : <>{t.quote}{expandedReviews[i] && <button className="gcard__more" onClick={() => setExpandedReviews(prev => ({ ...prev, [i]: false }))}> less</button>}</>
+                  }
+                </p>
                 <div className="gcard__role">{t.role}</div>
               </div>
             ))}
@@ -362,7 +378,7 @@ export default function Home() {
           <div className="testi__footer reveal">
             <span className="testi__footer-label">Verified Google Reviews</span>
             <div className="testi__footer-stars">★★★★★</div>
-            <span className="testi__footer-score">4.9 / 5 · 47 Reviews</span>
+            <span className="testi__footer-score">4.3 / 5 · 47 Reviews</span>
           </div>
         </div>
       </section>
